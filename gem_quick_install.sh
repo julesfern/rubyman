@@ -19,7 +19,7 @@ function install_app_gems {
 }
 
 function install_deployment_gems {
-	geminst "capistrano capistrano-ext mongrel mongrel_cluster thin memcache-client"
+	geminst "capistrano capistrano-ext mongrel mongrel_cluster thin memcache-client ferret"
 }
 
 function install_datamapper_edge {
@@ -31,7 +31,7 @@ function install_datamapper_edge {
 }
 
 function install_mysql_gems {
-	sudo env ARCHFLAGS="-arch i386" sudo gem install mysql -- --with-mysql-config=`which mysql_config`
+	sudo env ARCHFLAGS="-arch i386" $GEM_INSTALL_INVOCATION mysql -- --with-mysql-config=`which mysql_config`
 }
 
 function install_test_gems {
