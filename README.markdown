@@ -17,17 +17,17 @@ Installing it
 
 If you're me
 ------------
-cd ~
-git clone git@github.com:danski/rubyman.git
-echo "source ~/rubyman/ruby_switcher.sh" >> ~/.bash_profile
-echo "source ~/rubyman/gem_quick_install.sh" >> ~/.bash_profile
+	cd ~
+	git clone git@github.com:danski/rubyman.git
+	echo "source ~/rubyman/ruby_switcher.sh" >> ~/.bash_profile
+	echo "source ~/rubyman/gem_quick_install.sh" >> ~/.bash_profile
 
 If you're not me
 ----------------
-cd ~
-git clone git://github.com/danski/rubyman.git
-echo "source ~/rubyman/ruby_switcher.sh" >> ~/.bash_profile
-echo "source ~/rubyman/gem_quick_install.sh" >> ~/.bash_profile
+	cd ~
+	git clone git://github.com/danski/rubyman.git
+	echo "source ~/rubyman/ruby_switcher.sh" >> ~/.bash_profile
+	echo "source ~/rubyman/gem_quick_install.sh" >> ~/.bash_profile
 
 Using it
 ========
