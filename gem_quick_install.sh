@@ -10,6 +10,7 @@ function install_all_gems {
 	install_developer_gems
 	install_blogging_gems
 	install_mysql_gems
+	install_merb_edge
 	install_datamapper_edge
 }
 
@@ -28,6 +29,18 @@ function install_datamapper_edge {
 	$GEM_INSTALL_INVOCATION data_objects -s http://gems.datamapper.org
 	$GEM_INSTALL_INVOCATION do_sqlite3 -s http://gems.datamapper.org
 	$GEM_INSTALL_INVOCATION do_mysql -s http://gems.datamapper.org -- --with-mysql-config=`which mysql_config`
+}
+
+function install_merb_edge {
+	mkdir -p ~/tmp &&
+	pushd ~/tmp &&
+	rm -rf merb &&
+	git clone git://github.com/wycats/merb.git &&
+	pushd ~/tmp/merb &&	sudo rake install:core && 
+	pushd ~/tmp/merb/merb_datamapper && sudo rake install &&
+	pushd ~/tmp/merb &&	sudo rake install:more &&
+	sudo rm -rf ~/tmp/merb
+	# This is to avoid the ridiculous dependency chain problems in edge merb
 }
 
 function install_mysql_gems {
