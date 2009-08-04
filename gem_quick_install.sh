@@ -63,6 +63,7 @@ function install_developer_gems {
 	geminst "liquid treetop"
 	geminst "BlueCloth RedCloth maruku"
 	geminst "libxml-ruby ruby-hmac"
+	geminst "english"
 }
 
 function install_blogging_gems {
