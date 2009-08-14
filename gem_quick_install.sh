@@ -12,6 +12,7 @@ function install_all_gems {
 	install_mysql_gems
 	install_merb_edge
 	install_datamapper_edge
+	install_ffmpeg_toolchain
 }
 
 function install_app_gems {
@@ -53,6 +54,11 @@ function install_test_gems {
 
 function install_service_gems {
 	geminst "aws-s3"
+}
+
+function install_ffmpeg_toolchain {
+	sudo port install ffmpeg-devel
+	geminst "gwik-ffmpeg-ruby"
 }
 
 function install_developer_gems {
