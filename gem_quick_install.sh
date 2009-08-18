@@ -34,7 +34,7 @@ function install_datamapper_edge {
 function install_merb_edge {
 	mkdir -p ~/tmp &&
 	pushd ~/tmp &&
-	rm -rf merb &&
+  sudo rm -rf merb &&
 	git clone git://github.com/wycats/merb.git &&
 	pushd ~/tmp/merb &&	sudo rake install:core && 
 	pushd ~/tmp/merb/merb_datamapper && sudo rake install &&
@@ -68,6 +68,15 @@ function install_developer_gems {
 
 function install_blogging_gems {
 	geminst "mojombo-jekyll"
+}
+
+function install_ffmpeg_toolchain {
+	sudo port install ffmpeg-devel
+}
+
+function install_imagescience {
+	sudo port install freeimage
+	geminst "image_science"
 }
 
 function geminst {
