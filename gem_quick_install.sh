@@ -56,11 +56,6 @@ function install_service_gems {
 	geminst "aws-s3"
 }
 
-function install_ffmpeg_toolchain {
-	sudo port install ffmpeg-devel
-	geminst "gwik-ffmpeg-ruby"
-}
-
 function install_developer_gems {
 	geminst "technicalpickles-jeweler"
 	geminst "httparty nokogiri"
