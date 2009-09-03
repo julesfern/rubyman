@@ -13,6 +13,7 @@ function install_all_gems {
 	install_merb_edge
 	install_datamapper_edge
 	install_ffmpeg_toolchain
+	install_imagescience
 }
 
 function install_app_gems {
