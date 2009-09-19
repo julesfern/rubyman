@@ -1,4 +1,5 @@
-A series of utility scripts that extend your bash shell with magical ruby management capabilities.
+Rubyman (Projectman Edition)
+============================
 
 A shared problem
 ----------------
@@ -12,36 +13,54 @@ The coder's lament!
 -------------------
 A common complaint about multiruby systems is that they are *too automatic* and *not at all fussy enough about patchlevels*. With this set of scripts, you'll be painfully aware of every single teensy itty-bitty revision and update to your favourite scripting language.
 
-Installing it
-=============
+Installing
+==========
 
-If you're me
-------------
-	cd ~
-	git clone git@github.com:danski/rubyman.git
-	echo "source ~/rubyman/ruby_switcher.sh" >> ~/.bash_profile
-	echo "source ~/rubyman/gem_quick_install.sh" >> ~/.bash_profile
-
-If you're not me
-----------------
-	cd ~
-	git clone git://github.com/danski/rubyman.git
-	echo "source ~/rubyman/ruby_switcher.sh" >> ~/.bash_profile
-	echo "source ~/rubyman/gem_quick_install.sh" >> ~/.bash_profile
+	git clone git://github.com/danski/rubyman.git ~/.rubyman
+	echo "source ~/rubyman/rubyman.sh" >> ~/.bash_profile
 
 Using it
 ========
 
-To install Ruby 1.8.7 at patchlevel 174:
+Installing `profile` configurations
+-----------------------------------
 
-	install_mri "1.8" "7" "174"
+	rubyman install myprofile.sh
 	
-To use Ruby 1.8.7 at patchlevel 174:
+Rubyman also supports installing remote `profile` configurations, you can specify a remote URL in place of a file. 
 
-	use_mri "1.8" "7" "174"
+Note: bash scripts could be used to cause damage to your computer's data, only install a configuration from a trusted source.
 	
-To set a default ruby:
+Using a `profile`
+-----------------
 
-Edit the ruby_switcher.sh and set your own damned defaults.
+	rubyman use myprofileslug
+	
+Removing a `profile`
+--------------------
 
-This package also includes some functions I use to install gems.
+	rubyman delete myprofileslug
+	
+Creating a `profile` configuration
+----------------------------------
+
+A Rubyman `profile` configuration is a simple bash script;
+
+	#!/bin/bash
+
+	function rubyman_new_profile {
+		# sets the profile slug for this configuration
+		rubyman_profile_slug "myprofileslug"
+
+		# installs Ruby 1.8.7p72
+		rubyman_ruby_install "1.8" "7" "72"
+
+		# installs RubyGems 1.3.5
+		rubyman_ruby_install_gems "1.3" "5" 
+
+		# installs Merb
+		rubyman_gem_install "merb"
+
+		# installs Datamapper 0.10.0
+		rubyman_gem_install "dm-core" "0.10.0"
+	}
