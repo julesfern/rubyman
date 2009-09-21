@@ -1,0 +1,42 @@
+#!/bin/bash
+
+if [ ! -n "$RUBYMAN_HOME" ]
+	then
+		export RUBYMAN_HOME="~/.rubyman"
+fi
+
+if [ ! -n "$RUBYMAN_TMP" ]
+	then
+		export RUBYMAN_TMP="${RUBYMAN_HOME}/tmp"
+fi
+
+if [ "$RUBYMAN_IS_ALIVE" != "false" ]
+	then
+		source $RUBYMAN_HOME/includes/environment.sh
+		source $RUBYMAN_HOME/includes/gem.sh
+		source $RUBYMAN_HOME/includes/profile.sh
+		source $RUBYMAN_HOME/includes/ruby.sh
+		source $RUBYMAN_HOME/includes/rubygems.sh
+		source $RUBYMAN_HOME/rubyman.sh
+		source $RUBYMAN_HOME/includes/utils.sh
+		
+		export RUBYMAN_IS_ALIVE="true"
+fi
+
+if [ !$# == 2 ]; then
+  echo "Usage: $0 action options"
+  exit
+fi
+
+action=$1
+args=("$@")
+
+case $action in
+	create) rubyman_profile_create "${args[@]}";;
+	delete) rubyman_profile_delete "${args[@]}";;
+	use) rubyman_profile_use "${args[@]}";;
+	info) rubyman_profile_info "${args[@]}";;
+	update) rubyman_update;;
+	install) rubyman_install;;
+	version) rubyman_version;;
+esac

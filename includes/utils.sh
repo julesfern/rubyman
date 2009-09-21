@@ -27,12 +27,33 @@ function rubyman_utils_fetch_remote {
 		if [ $has_wget -eq 1 ]; then
 			wget $url
 		else
-			echo "You need either curl or wget to use rubyman to install Ruby from source"
-			exit 1
+			echo "You need either curl or wget to use Rubyman to install from source"
+			kill $!
 		fi
 	fi
 	
 	rubyman_utils_breaker
+	
+	if [ -d $output ]; then
+		echo "Failed to download $output"
+		kill $!
+	else
+		echo "Fetched remote file '$output' successfully"
+	fi
+	
+	rubyman_utils_breaker
+}
+
+function rubyman_utils_readlink {
+    local path=$1 ll
+	local real_path=0
+
+    if [ -L "$path" ]; then
+        ll="$(LC_ALL=C ls -l "$path" 2> /dev/null)" &&
+        echo "${ll/* -> }";
+    else
+		return 1
+    fi
 }
 
 function rubyman_utils_exists {

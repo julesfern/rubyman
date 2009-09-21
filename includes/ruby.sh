@@ -12,7 +12,7 @@ function rubyman_ruby_install {
 	
 	rubyman_enter_source_install
 	
-	rubyman_utils_fetch_remote ${url}
+	rubyman_utils_fetch_remote ${url} "${version}.tar.gz"
 	
 	tar xzf ${version}.tar.gz
 	cd ${version}
@@ -20,25 +20,6 @@ function rubyman_ruby_install {
 	./configure --prefix="${RUBYMAN_ACTIVE_PROFILE_DIR}" --enable-shared
 	make
 	make install
-	
-	rubyman_exit_source_install
-}
-
-function rubyman_ruby_install_gems {
-	local major=$1
-	local minor=$2
-	local package="rubygems-$1.$2.tgz"
-	
-	echo "Installing RubyGems ${version} into the '${RUBYMAN_ACTIVE_PROFILE}' profile"
-	
-	rubyman_enter_source_install
-	
-	rubyman_utils_fetch_remote "http://rubyforge.org/frs/download.php/60718/$package"
-	
-	tar xzf $package
-	cd rubygems*
-	
-	ruby setup.rb
 	
 	rubyman_exit_source_install
 }
