@@ -64,15 +64,13 @@ function rubyman_profile_find_slug {
 function rubyman_profile_info {
 	local profile=0
 	
-	if [ ! -n $2 ]; then
+	if [ -n $2 ]; then
 		profile=$RUBYMAN_ACTIVE_PROFILE
 	else
 		profile=$2
 	fi
 	
 	local profile_slug=`rubyman_profile_find_slug $profile`
-	
-	echo `rubyman_version`
 	
 	rubyman_utils_breaker
 	
@@ -84,7 +82,7 @@ function rubyman_profile_info {
 	
 	rubyman_utils_breaker
 	
-	if [ -d "${RUBYMAN_HOME}/profiles/${profile}" ]; then
+	if [ -d "$RUBYMAN_ACTIVE_PROFILE_DIR" ]; then
 		echo "Name: $profile"
 		echo "Slug: $profile_slug"
 		
@@ -99,6 +97,8 @@ function rubyman_profile_info {
 	else
 		echo "The profile '${profile}' does not exist in rubyman"
 	fi
+	
+	rubyman_utils_breaker
 }
 
 function rubyman_profile_use {

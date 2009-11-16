@@ -13,11 +13,17 @@ The coder's lament!
 -------------------
 A common complaint about multiruby systems is that they are *too automatic* and *not at all fussy enough about patchlevels*. With this set of scripts, you'll be painfully aware of every single teensy itty-bitty revision and update to your favourite scripting language.
 
+Requirements
+============
+
+* curl or wget
+* tar
+
 Installing
 ==========
 
-	git clone git://github.com/danski/rubyman.git ~/.rubyman
-	echo "source ~/rubyman/rubyman.sh" >> ~/.bash_profile
+	git clone git://github.com/danski/rubyman.git
+	./rubyman/install.sh
 
 Using it
 ========

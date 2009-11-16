@@ -1,10 +1,10 @@
 #!/bin/bash
 
 function rubyman_new_profile {
-	rubyman_profile_slug "example"
+	rubyman_profile_name "general" "g"
 	
-	#rubyman_ruby_install "1.8" "7" "72"
-	#rubyman_ruby_install_gems "1.3" "5" 
-
-	rubyman_gem_install "merb"
+	rubyman_ruby_install "1.8" "7" "72"
+	rubyman_rubygems_install "1.3" "5"
+	
+	rubyman_gem_install "jeweler"
 }
