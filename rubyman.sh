@@ -4,12 +4,12 @@
 
 if [ ! -n "$RUBYMAN_HOME" ]
 	then
-		export RUBYMAN_HOME="~/.rubyman"
+		export RUBYMAN_HOME=~/.rubyman
 fi
 
 if [ ! -n "$RUBYMAN_TMP" ]
 	then
-		export RUBYMAN_TMP="${RUBYMAN_HOME}/tmp"
+		export RUBYMAN_TMP=${RUBYMAN_HOME}/tmp
 fi
 
 if [ "$RUBYMAN_LOADED_CURRENT" != "true" ]

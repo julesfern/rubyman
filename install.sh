@@ -12,15 +12,17 @@ echo "Installing Rubyman to $install_path"
 
 mkdir -p "$install_path"
 
+pushd `pwd`
+
 # move files to install_path
-mv includes/ "$install_path/"
+mv includes "$install_path"
 
 if [ -d ".git" ]; then
-	mv .git "$install_path/"
+	mv .git $install_path/
 fi
 
 # load rubyman.sh into the profile
-echo "source $install_path/rubyman.sh" >> ~/.bash_profile
+echo "source $install_path/rubyman.sh" >> ~/.profile
 
 # load rubyman into the current shell
 source $install_path/rubyman.sh
