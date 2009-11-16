@@ -1,14 +1,16 @@
 #!/bin/bash
 
-local install_path=$1
-
-echo "Installing Rubyman to $install_path"
+install_path=$1
 
 if [ ! -n "$install_path" ]; then
-	install_path="~/.rubyman"
+	install_path=~/.rubyman
 else
 	echo "export $RUBYMAN_HOME=$install_path" >> ~/.bash_profile
 fi
+
+echo "Installing Rubyman to $install_path"
+
+mkdir -p "$install_path"
 
 # move files to install_path
 mv includes/ "$install_path/"
